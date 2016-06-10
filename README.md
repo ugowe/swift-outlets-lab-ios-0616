@@ -20,6 +20,7 @@
 * Can locate the Attributes Inspector and change the Background color of Views
 * They know how to connect the ViewController.swift file and understand it's view life cycle.
 * Can hook up IBOutlets and IBActions.
+
 ## Outline / Notes
 
 *  I've included an Xcode project along with this repo.
