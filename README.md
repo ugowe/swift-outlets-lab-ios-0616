@@ -1,10 +1,8 @@
 # Simon Says Lab
 
-<img src="https://upload.wikimedia.org/wikipedia/en/b/b2/It's_dangerous_to_go_alone!_Take_this..png" alt="Drawing" style="width: 200px;"/>  
+![Drawing](https://upload.wikimedia.org/wikipedia/en/b/b2/It's_dangerous_to_go_alone!_Take_this..png)
 
-
-
-## Learning Objectives - The student should be able to..
+## Learning Objectives - The student should be able to...
 
 * Complete this lab which will encompass everything they learned in Unit 4.
 

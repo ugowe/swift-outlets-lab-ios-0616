@@ -17,11 +17,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
-    
-    
-    
 }
 
 // MARK: - SimonSays Game Methods
@@ -50,9 +45,4 @@ extension ViewController {
                 }
         })
     }
-    
 }
-
-
-
-
