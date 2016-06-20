@@ -18,41 +18,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        winLabel.hidden = true
-    }
-
-    func checkWin() {
-        guard buttonsClicked == simonSaysGame.patternToMatch.count else { return }
-        if simonSaysGame.wonGame() {
-            winLabel.text = "You won!"
-        } else {
-            winLabel.text = "Nope, try again."
-        }
-        winLabel.hidden = false
-    }
-
-    @IBAction func redButtonPressed(sender: AnyObject) {
-        simonSaysGame.guessRed()
-        buttonsClicked += 1
-        checkWin()
-    }
-
-    @IBAction func greenButtonPressed(sender: AnyObject) {
-        simonSaysGame.guessGreen()
-        buttonsClicked += 1
-        checkWin()
-    }
-
-    @IBAction func yellowButtonPressed(sender: AnyObject) {
-        simonSaysGame.guessYellow()
-        buttonsClicked += 1
-        checkWin()
-    }
-
-    @IBAction func blueButtonPressed(sender: AnyObject) {
-        simonSaysGame.guessBlue()
-        buttonsClicked += 1
-        checkWin()
     }
 }
 
