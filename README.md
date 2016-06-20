@@ -19,32 +19,66 @@
 * They know how to connect the ViewController.swift file and understand it's view life cycle.
 * Can hook up IBOutlets and IBActions.
 
-## Outline / Notes
+## Simon Says: Do This Lab
 
-*  I've included an Xcode project along with this repo.
-* I like the idea of having them re-create the Simon Says game with an emphasis on the following:
-	* Dragging four `UIButton`'s to the four corners of the view.
-	* Creating `IBAction`'s for each `UIButton` (four in total).
-	* MAYBE: They also drag a `UILabel` above the `UIView` that displays the color. This `UILabel` will let the user know whether or not they guessed the correct pattern when they tap one of the four `UIButton`'s?
-	* MAYBE: They include a `UILabel` that represents their score? Or perhaps it represents how far they've gotten?
-* In our instructions to the student, we shouldn't hand hold too much here. I like the idea of challenging them. But, as I'm still deciding on whether or not they will have gone through a unit on classes before this particular lab (I'm inclined NOT to) then this idea of having them figure out how to call the Struct's methods will be very foreign to them. That being said, we should show them the methods they can call to "make the game work" so to speak.  
-* Notes to the writer of this lab. I've made a quick attempt to create a Simon Says game which clearly is faulty and most likely not the best way to make a SImon Says game 🙆🏼 - This is a direction I had in my mind for where this lab could go, in that... they would become familiar with creating IBActions and IBOutlets and coming to an understanding that they could call on methods from these actions, so they could begin to see this connection and what might be possible for them to accomplish.
-* I like the idea of the four `UIButton`'s in the corner of the screen being just square Buttons with no title text. Do we then not have them read the button argument coming in to their action method... instead having them call on the simonSays.guessRed method or something based upon them knowing they dragged over an action from a redButton so they call on guessRed from it?
-* I've included three cocoapods for testing purposes (although I don't know if we need to use them for this lab, I want to.. but don't see it as useful testing any particular methods relating to the Game (considering we wrote it) but.. more so testing the Buttons and seeing if they implemented the actions properly to facilitate a game. I included the KIF framework (through Cocoapods) which will allow us to do some UI testing.
-* I didn't go through with the **Final Test Target Configurations** with regards to the [Kif Cocoapod](https://github.com/kif-framework/KIF#final-test-target-configurations)
+Remember the game [Simon](https://en.wikipedia.org/wiki/Simon_\(game\))? Simon was an electronic game popular in the 1980s. The toy would play a sequence of colors, and you had to press buttons corresponding to the colors in the same order as the sequence given.
 
-```swift
-Final Test Target Configurations
+In this lab, you're going to recreate the game Simon.
 
-You need your tests to run hosted in your application. Xcode does this for you by default when creating a new testing bundle target, but if you're migrating an older bundle, follow the steps below.
+Don't worry: Most of the game logic has been written for you. You simply have to design the interface and set up the right Interface Builder outlets and actions to make the game work.
 
-First add your application by selecting "Build Phases", expanding the "Target Dependencies" section, clicking on the "+" button, and in the new sheet that appears selecting your application target and clicking "Add".
+Here's what the UI should look like when the game initially loads:
 
-Next, configure your bundle loader. In "Build Settings", expand "Linking" and edit "Bundle Loader" to be $(BUILT_PRODUCTS_DIR)/MyApplication.app/MyApplication where MyApplication is the name of your app. Expand the "Testing" section and edit "Test Host" to be $(BUNDLE_LOADER). Also make sure that "Wrapper Extension" is set to "xctest".
+![Simon UI](http://i.imgur.com/J70uWbC.png)
 
-The last step is to configure your unit tests to run when you trigger a test (⌘U). Click on your scheme name and select "Edit Scheme…". Click on "Test" in the sidebar followed by the "+" in the bottom left corner. Select your testing target and click "OK".
-```
+There is one button in the center, **Start Game**, that will show a sequence of colors in a view just above the button. (Initially, this view is hidden from the user.) The UI also consists of four buttons, one in each corner, and each one a different color: Red, Green, Yellow, and Blue, as shown.
 
-* Could we make this more difficult? Will this be too easy?
+There is also a hidden label beneath the **Start Game** button that will let the user know if they won or lost the game.
+
+When the user presses **Start Game**, a sequence of colors will be shown in the (initially hidden) view just above the **Start Game** button. After the sequence is shown, the user will be able to press the colored buttons. If they press them in the correct order, they win, and see this screen:
+
+![Simon: You won!](http://i.imgur.com/9ZXBrYH.png)
+
+If they press them in the wrong order, though, they will see this:
+
+![Simon: You lost!](http://i.imgur.com/xIryCfI.png)
+
+Let's get to it!
+
+Start by opening up `SimonSaysLab.xcworkspace`. You'll see that some parts of the view controller have already been started for you, as has a bit of the main UI (in `Main.storyboard`). You'll have to fill in the rest.
+
+## Game Engine
+
+A game engine has already been implemented for you. It is created as the `simonSaysGame` instance variable in the view controller. It has a number of methods already implemented for you that you will find useful:
+
+* There are `guessRed()`, `guessGreen()`, `guessYellow()`, and `guessBlue()` methods written. You can call these when the user makes a guess.
+* There is a `gameWon()` method that will return `true` if the user has made the correct guesses, and `false` if they haven't.
+
+You can use these methods from the view controller to make guesses and determine if a user has won or lost.
+
+## View Controller
+
+The view controller has a few IB outlets already created. `displayColorView` is a connection to the view that displays the colored sequence. It is already connected to the appropriate view, and you don't need to worry about it. The `startGameButton` outlet has already been created and connected, too. `winLabel` is already created and connected to the label that tells the user if they guessed correctly or not.
+
+The view controller also has a couple more instance variables. `simonSaysGame` is a reference to the game engine, and `buttonsClicked` records the number of buttons that have been clicked so far, which you may find to be helpful in implementing this application.
+
+## View
+
+The view in `Main.storyboard` has also been partially set up for you. You'll see there is a **Start Game** button. It is already connected to the `startGameTapped(_:)` IB action in the view controller. The label indicating whether the user has one or lost has been created for you, too, and connected as an IB outlet.
+
+## Your Tasks
+
+There's still a lot of work to be done, though. Here's what you need to do to finish this lab:
+
+1. Create a colored button in each corner of the UI.
+	* These buttons should be roughly 100 pixels by 100 pixels square. Remember: You can drag their size handles to change their size, or change them in the Attributes Inspector.
+	* They have no text, so you should remove the default text.
+	* Finally, you should change their background colors. This can also be done in the Attributes Inspector.
+2. Create IB actions for each of the colored buttons in the view controller, and wire them up to these actions.
+3. Hide the `winLabel` when the view initially loads. It shouldn't be shown until the game is over.
+4. When a button is pressed, check to see if the user has won the game. Remember, `simonSaysGame` has a `gameWon()` method that will return `true` if the user won the game.
+5. Once you can determine if the user has won or lost, change the text in the `winLabel` to indicate if the user won or lost.
+
+You may find this lab to be challenging, but if you use everything you've learned in previous labs, you can complete it. Simon Says: Make this app work!
 
 <a href='https://learn.co/lessons/OutletLab' data-visibility='hidden'>View this lesson on Learn.co</a>
