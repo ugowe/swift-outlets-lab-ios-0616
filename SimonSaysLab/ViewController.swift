@@ -41,6 +41,7 @@ extension ViewController {
                     self.displayTheColors()
                 } else {
                     self.view.userInteractionEnabled = true
+                    print("Pattern to match: \(self.simonSaysGame.patternToMatch)")
                 }
         })
     }

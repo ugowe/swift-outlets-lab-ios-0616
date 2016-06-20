@@ -81,6 +81,10 @@ extension SimonSays {
     func sequenceFinished() -> Bool {
         return colorToDisplay > patternToMatch.count
     }
+
+    func wonGame() -> Bool {
+        return chosenColors == patternToMatch
+    }
     
     mutating func makeGuessWith(color: Color) -> Bool {
         guard chosenColors.count < patternToMatch.count else { return false }
