@@ -33,12 +33,11 @@ extension ViewController {
     private func displayTheColors() {
         self.view.userInteractionEnabled = false
         UIView.transitionWithView(displayColorView, duration: 1.5, options: .TransitionCurlUp, animations: {
-            self.displayColorView.backgroundColor = self.simonSaysGame.patternToMatch.first?.colorToDisplay
+            self.displayColorView.backgroundColor = self.simonSaysGame.nextColor()?.colorToDisplay
             self.displayColorView.alpha = 0.0
             self.displayColorView.alpha = 1.0
             }, completion: { _ in
-                if !self.simonSaysGame.patternToMatch.isEmpty {
-                    self.simonSaysGame.patternToMatch.removeFirst()
+                if !self.simonSaysGame.sequenceFinished() {
                     self.displayTheColors()
                 } else {
                     self.view.userInteractionEnabled = true

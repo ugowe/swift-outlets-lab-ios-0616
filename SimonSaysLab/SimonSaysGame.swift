@@ -51,6 +51,7 @@ struct SimonSays {
     
     var chosenColors = [Color]()
     var patternToMatch = [Color]()
+    var colorToDisplay = 0
     let numberOfColorsToMatch: Int
     
     init(numberOfColorsToMatch: Int = 5) {
@@ -67,6 +68,19 @@ struct SimonSays {
 
 // MARK: - Gameplay methods
 extension SimonSays {
+
+    mutating func nextColor() -> Color? {
+        var color: Color? = nil
+        if colorToDisplay < patternToMatch.count {
+            color = patternToMatch[colorToDisplay]
+        }
+        colorToDisplay += 1
+        return color
+    }
+
+    func sequenceFinished() -> Bool {
+        return colorToDisplay > patternToMatch.count
+    }
     
     mutating func makeGuessWith(color: Color) -> Bool {
         guard chosenColors.count < patternToMatch.count else { return false }
