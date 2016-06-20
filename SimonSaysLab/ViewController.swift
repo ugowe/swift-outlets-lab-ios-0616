@@ -32,7 +32,7 @@ extension ViewController {
     
     private func displayTheColors() {
         self.view.userInteractionEnabled = false
-        UIView.transitionWithView(displayColorView, duration: 2.5, options: .TransitionCurlUp, animations: {
+        UIView.transitionWithView(displayColorView, duration: 1.5, options: .TransitionCurlUp, animations: {
             self.displayColorView.backgroundColor = self.simonSaysGame.patternToMatch.first?.colorToDisplay
             self.displayColorView.alpha = 0.0
             self.displayColorView.alpha = 1.0

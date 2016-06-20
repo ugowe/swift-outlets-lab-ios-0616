@@ -53,7 +53,7 @@ struct SimonSays {
     var patternToMatch = [Color]()
     let numberOfColorsToMatch: Int
     
-    init(numberOfColorsToMatch: Int = 15) {
+    init(numberOfColorsToMatch: Int = 5) {
         self.numberOfColorsToMatch = numberOfColorsToMatch
         
         for _ in (0..<numberOfColorsToMatch) {
