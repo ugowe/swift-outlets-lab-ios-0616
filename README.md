@@ -80,8 +80,8 @@ There's still a lot of work to be done, though. Here's what you need to do to fi
 	* Finally, you should change their background colors. This can also be done in the Attributes Inspector.
 2. Create IB actions for each of the colored buttons in the view controller, and wire them up to these actions.
 3. Hide the `winLabel` when the view initially loads. It shouldn't be shown until the game is over.
-4. When a button is pressed, check to see if the user has won the game. Remember, `simonSaysGame` has a `gameWon()` method that will return `true` if the user won the game.
-5. Once you can determine if the user has won or lost, change the text in the `winLabel` to indicate if the user won or lost.
+4. Fill in the logic for the IB actions you created in \#2. When a button is tapped, you should let the game engine know that a guess has been made. For example, when the yellow button is tapped, you should call `simonSaysGame.guessYellow()` to record that guess. Do this for each of the buttons. Remember that you can use Xcode's autocomplete function to help you with this code; it will suggest methods you can call on `simonSaysGame` to record these guesses.
+5. Once you can determine if the user has won or lost, change the text in the `winLabel` to indicate if the user won or lost. Remember, `simonSaysGame` has a `gameWon()` method that will return `true` if the user won the game.
 
 You may find this lab to be challenging, but if you use everything you've learned in previous labs, you can complete it. Simon Says: Make this app work!
 
