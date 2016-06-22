@@ -56,6 +56,10 @@ A game engine has already been implemented for you. It is created as the `simonS
 
 You can use these methods from the view controller to make guesses and determine if a user has won or lost.
 
+Remember that you can use Xcode's autocomplete function to help you write code. If you type `simonSaysGame.`, you'll get a list of methods you can call on `simonSaysGame`. Select one, and the code will be filled in for you! Try it out.
+
+![SimonSays Autocomplete](http://i.imgur.com/1uL9nMt.png)
+
 ## View Controller
 
 The view controller has a few IB outlets already created. `displayColorView` is a connection to the view that displays the colored sequence. It is already connected to the appropriate view, and you don't need to worry about it. The `startGameButton` outlet has already been created and connected, too. `winLabel` is already created and connected to the label that tells the user if they guessed correctly or not.
