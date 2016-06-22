@@ -12,16 +12,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var displayColorView: UIView!
     @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var winLabel: UILabel!
     var simonSaysGame = SimonSays()
+    var buttonsClicked = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
-    
-    
-    
 }
 
 // MARK: - SimonSays Game Methods
@@ -37,22 +34,17 @@ extension ViewController {
     
     private func displayTheColors() {
         self.view.userInteractionEnabled = false
-        UIView.transitionWithView(displayColorView, duration: 2.5, options: .TransitionCurlUp, animations: {
-            self.displayColorView.backgroundColor = self.simonSaysGame.patternToMatch.first?.colorToDisplay
+        UIView.transitionWithView(displayColorView, duration: 1.5, options: .TransitionCurlUp, animations: {
+            self.displayColorView.backgroundColor = self.simonSaysGame.nextColor()?.colorToDisplay
             self.displayColorView.alpha = 0.0
             self.displayColorView.alpha = 1.0
             }, completion: { _ in
-                if !self.simonSaysGame.patternToMatch.isEmpty {
-                    self.simonSaysGame.patternToMatch.removeFirst()
+                if !self.simonSaysGame.sequenceFinished() {
                     self.displayTheColors()
                 } else {
                     self.view.userInteractionEnabled = true
+                    print("Pattern to match: \(self.simonSaysGame.patternToMatch)")
                 }
         })
     }
-    
 }
-
-
-
-
