@@ -1,10 +1,9 @@
 # Simon Says Lab
 
-![Drawing](https://upload.wikimedia.org/wikipedia/en/b/b2/It's_dangerous_to_go_alone!_Take_this..png)
+![Drawing](http://i.imgur.com/e1ep3LE.jpg?1)
 
-## Learning Objectives - The student should be able to...
+> If you obey all the rules, you miss all the fun. -[Katharine Hepburn](https://en.wikipedia.org/wiki/Katharine_Hepburn)
 
-* Complete this lab 
 
 ## Simon Says: Do This Lab
 
