@@ -13,12 +13,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var displayColorView: UIView!
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var winLabel: UILabel!
+    @IBOutlet var buttons: [UIButton]!
     var simonSaysGame = SimonSays()
     var buttonsClicked = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        winLabel.hidden = true
+        
     }
+    
+
 }
 
 // MARK: - SimonSays Game Methods
@@ -29,8 +34,58 @@ extension ViewController {
             self.startGameButton.hidden = true
             }, completion: nil)
         
-        displayTheColors()
+        newGame()
     }
+    
+    @IBAction func buttonsTapped(sender: UIButton) {
+        buttonsClicked += 1
+        switch  sender.tag {
+        case 1:
+            simonSaysGame.guessRed()
+            print("Red Tapped")
+        case 2:
+            simonSaysGame.guessGreen()
+            print("Green Tapped")
+        case 3:
+            simonSaysGame.guessYellow()
+            print("Yellow Tapped")
+        case 4:
+            simonSaysGame.guessBlue()
+            print("Blue Tapped")
+        default:
+            break
+        }
+        gameDidEnd()
+        
+    }
+    
+    func newGame() {
+        displayTheColors()
+        
+        buttonsClicked = 0
+        winLabel.hidden = true
+        simonSaysGame = SimonSays()
+
+    }
+    
+    func gameDidEnd() {
+        if (buttonsClicked == 5) {
+            winLabel.hidden = false
+            startGameButton.hidden = false
+            
+            if simonSaysGame.wonGame(){
+                winLabel.text = "You won!"
+            } else {
+                winLabel.text = "Nope, try again loser!!!"
+            }
+            
+            for button: UIButton in buttons {
+                button.hidden = true
+            }
+        }
+    }
+    
+
     
     private func displayTheColors() {
         self.view.userInteractionEnabled = false
@@ -44,6 +99,9 @@ extension ViewController {
                 } else {
                     self.view.userInteractionEnabled = true
                     print("Pattern to match: \(self.simonSaysGame.patternToMatch)")
+                }
+                for button: UIButton in self.buttons {
+                    button.hidden = false
                 }
         })
     }
